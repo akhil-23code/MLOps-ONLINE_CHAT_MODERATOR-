@@ -1,0 +1,17 @@
+# Web Server
+fastapi[standard]==0.115.7
+uvicorn==0.34.0
+
+# Deep Learning (Inference)
+transformers==4.47.1
+torch==2.5.1
+numpy<2.0.0
+
+# MLOps & Data
+pydantic==2.10.4
+evidently==0.4.32
+mlflow-skinny==2.19.0
+pandas
+
+# Utilities
+python-multipart
