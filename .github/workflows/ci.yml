@@ -8,7 +8,7 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v4
         with:
-            lfs: true
+          lfs: true # Fixed: aligned with 2 spaces
 
       - name: Set up Python
         uses: actions/setup-python@v5
@@ -22,14 +22,18 @@ jobs:
           pip install pytest httpx
           python -m nltk.downloader vader_lexicon 
 
-      - name: Run API Tests
-        env:
-          PYTHONPATH: .
-        run: |
-          pytest tests/test_api.py
+      # Ensure the reports folder exists so the script doesn't crash
+      - name: Create Reports Directory
+        run: mkdir -p reports
 
       - name: Run Monitoring Check
         env:
           PYTHONPATH: .
         run: |
           python app/monitoring.py
+
+      - name: Run API Tests
+        env:
+          PYTHONPATH: .
+        run: |
+          pytest tests/test_api.py
